@@ -5,41 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
         }
 
-        #editor-trigger {
-            height: 500px;
-        }
-
         body {
             width: 800px;
             height: 500px;
         }
-    </style>
 
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/wangEditor/css/wangEditor.css">
+        form{
+            margin-top:100px
+        }
+
+    </style>
 </head>
 <body>
-<div id="editor-container">
-    <div id="editor-trigger">
-</div>
-
-    <hr>
-
-    <p><b>以下是编辑器的内容：</b></p>
-    <p>{{ editorContent }}</p>
+<div class="container">
+    <form class="form-horizontal" action="/example/html/form_action.asp" method="get">
+        <div class="form-group">
+            <label for="username" class="col-sm-5 control-label">用户账号</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="username" placeholder="输入用户账号">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-5 control-label">登录密码</label>
+            <div class="col-sm-3">
+                <input type="password" class="form-control" id="password" placeholder="输入登录密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-3">
+                <button type="button" class="btn btn-link">快速注册</button>
+                <button type="submit" class="btn btn-primary btn-lg active">登 录</button>
+                <button type="button" class="btn btn-link">忘记密码</button>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
-<script src="lib/jquery-1.7.2.js"></script>
-<script src="lib/bootstrap.js"></script>
-<script src="lib/vue.js"></script>
-<script src="lib/wangEditor/js/wangEditor.js"></script>
-<script src="js/editBox.js"></script>
 </html>
 
 
