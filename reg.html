@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 800px;
+            height: 500px;
+        }
+
+        form {
+            margin-top: 100px
+        }
+
+    </style>
+</head>
+<body>
+<script src="lib/jquery-1.7.2.js"></script>
+<script src="lib/bootstrap.js"></script>
+<script src="lib/vue.js"></script>
+<script src="lib/wangEditor/js/wangEditor.js"></script>
+<script src="scripts/editBox.js"></script>
+<script src="scripts/reg.js"></script>
+
+<div class="container" id="regBox">
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <div class="col-sm-offset-5 col-sm-3 ">
+                    <legend> 用户注册</legend>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-5 control-label">用户账号</label>
+                <div class="col-sm-3">
+                    <input type="text" id="username" class="form-control" placeholder="" v-model="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-5 control-label">登录密码</label>
+                <div class="col-sm-3">
+                    <input type="password" id="password" class="form-control" placeholder="" v-model="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rePassword" class="col-sm-5 control-label">重复登录密码</label>
+                <div class="col-sm-3">
+                    <input type="password" id="rePassword" class="form-control" placeholder="" v-model="rePassword">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-5 col-sm-3">
+                    <button type="button" class="btn btn-primary btn-lg active" @click="reg()">注 册</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
