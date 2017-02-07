@@ -20,7 +20,7 @@ window.onload = function () {
       },
 
       postRegInfo: function () {
-        var url = 'http://app.hiqiuyi.cn:3001/regist';
+        var url = 'http://app.hiqiuyi.cn:3001/reg';
         this.$http.post(url, {
           username: this.username,
           password: this.password
@@ -29,11 +29,11 @@ window.onload = function () {
         }).then(function (res) {
           console.log(res.data);
           if (res.data.msgCode === 0) {
-            $('#loginSuccess').show();
+            $('#regSuccess').show();
           } else if (res.data.msgCode === -2) {
             $('.usernameExist').show();
           } else {
-            $('#loginFail').show();
+            $('#regFail').show();
           }
         }, function () {
           console.error('$http.post ' + url + ' is error!');
