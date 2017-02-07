@@ -1,4 +1,6 @@
 window.onload = function () {
+  clearPrompt();
+
   new Vue({
     el: '#regBox',             //value为选择器：id, class, tagName
     data: {
@@ -12,7 +14,12 @@ window.onload = function () {
     methods:{
       reg: function () {
         alert(this.username + '---' + this.password + '---' + this.rePassword);
+
       }
     }
   });
+
+  function clearPrompt() {
+    $('.prompts').hide();
+  }
 };
