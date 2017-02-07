@@ -1,25 +1,57 @@
 window.onload = function () {
-  clearPrompt();
-
   new Vue({
     el: '#regBox',             //value为选择器：id, class, tagName
     data: {
-      bool: true,
-      arr: ['one', 'two', 'three'],
-      json: {a:'one', b:'two', c:'three'},
       username: '',
       password: '',
       rePassword: ''
     },
-    methods:{
-      reg: function () {
-        alert(this.username + '---' + this.password + '---' + this.rePassword);
+    methods: {
+      clearPrompt: function () {
+        $('.prompts').hide();
+      },
 
+      checkParam: function () {
+        this.username === '' ? $('.usernameIsEmpty').show() : $('.usernameIsEmpty').hide();
+        this.password.length < 6 ? $('.passwordIsShort').show() : $('.passwordIsShort').hide();
+        this.password != this.rePassword ? $('.passwordNotEqual').show() : $('.passwordNotEqual').hide();
+
+        return (this.username != '') && (this.password.length >= 6) && (this.password == this.rePassword);
+      },
+
+      postRegInfo: function () {
+        var url = 'http://app.hiqiuyi.cn:3001/regist';
+        this.$http.post(url, {
+          username: this.username,
+          password: this.password
+        }, {
+          emulateJSON: true
+        }).then(function (res) {
+          console.log(res.data);
+          if (res.data.msgCode === 0) {
+            $('#loginSuccess').show();
+          } else if (res.data.msgCode === -2) {
+            $('.usernameExist').show();
+          } else {
+            $('#loginFail').show();
+          }
+        }, function () {
+          console.error('$http.post ' + url + ' is error!');
+        });
+      },
+
+      clearValue: function () {
+        this.username = '';
+        this.password = '';
+        this.rePassword = '';
+      },
+
+      reg: function () {
+        this.clearPrompt();
+        this.checkParam() && this.postRegInfo();
+        // this.clearValue();
       }
     }
   });
 
-  function clearPrompt() {
-    $('.prompts').hide();
-  }
 };
